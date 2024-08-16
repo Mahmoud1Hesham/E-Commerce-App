@@ -10,23 +10,26 @@ import Notfound from './components/Notfound/Notfound.jsx';
 import Register from './components/Register/Register.jsx';
 import SignIn from './components/SignIn/SignIn.jsx';
 import Products from './components/Products/Products.jsx';
+import UserContextProvider from './Context/UserContext.jsx';
+import RouteGuard from './components/RouteGuard/RouteGuard.jsx';
+import ProductDetails from './components/ProductDetails/ProductDetails.jsx';
 
 function App() {
 let routers = createBrowserRouter([
   {path :'',element : <Layout/> , children : [
-    {index :true , element : <Home/> },
-    {path : 'brands', element : <Brands/> },
-    {path : 'cart', element : <Cart/> },
-    {path : 'categories', element : <Categories/> },
-    {path : 'layout', element : <Layout/> },
-    {path : 'notfound', element : <Notfound/> },
+    {index :true , element : <RouteGuard><Home/></RouteGuard> },
+    {path : 'brands', element : <RouteGuard><Brands/></RouteGuard> },
+    {path : 'cart', element : <RouteGuard><Cart/></RouteGuard> },
+    {path : 'categories', element : <RouteGuard><Categories/></RouteGuard> },
+    {path : '*', element : <Notfound/> },
     {path : 'register', element : <Register/> }, 
     {path : 'signin', element : <SignIn/> }, 
-    {path : 'products', element : <Products/> }, 
+    {path : 'products', element : <RouteGuard><Products/></RouteGuard> }, 
+    {path : 'productdetails/:id', element : <RouteGuard><ProductDetails/></RouteGuard> }, 
   ]}
 ]);
-  return <RouterProvider router={routers}></RouterProvider>
-  
+  return <UserContextProvider>
+    <RouterProvider router={routers}></RouterProvider>
+  </UserContextProvider>
 }
-
 export default App
