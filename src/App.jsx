@@ -13,23 +13,34 @@ import Products from './components/Products/Products.jsx';
 import UserContextProvider from './Context/UserContext.jsx';
 import RouteGuard from './components/RouteGuard/RouteGuard.jsx';
 import ProductDetails from './components/ProductDetails/ProductDetails.jsx';
+import CartContextProvider from './Context/CartContext.jsx';
+import { Toaster } from 'react-hot-toast';
+import CheckOut from './components/CheckOut/CheckOut.jsx';
+import AllOrders from './components/AllOrders/AllOrders.jsx';
 
 function App() {
-let routers = createBrowserRouter([
-  {path :'',element : <Layout/> , children : [
-    {index :true , element : <RouteGuard><Home/></RouteGuard> },
-    {path : 'brands', element : <RouteGuard><Brands/></RouteGuard> },
-    {path : 'cart', element : <RouteGuard><Cart/></RouteGuard> },
-    {path : 'categories', element : <RouteGuard><Categories/></RouteGuard> },
-    {path : '*', element : <Notfound/> },
-    {path : 'register', element : <Register/> }, 
-    {path : 'signin', element : <SignIn/> }, 
-    {path : 'products', element : <RouteGuard><Products/></RouteGuard> }, 
-    {path : 'productdetails/:id', element : <RouteGuard><ProductDetails/></RouteGuard> }, 
-  ]}
-]);
-  return <UserContextProvider>
-    <RouterProvider router={routers}></RouterProvider>
-  </UserContextProvider>
+  let routers = createBrowserRouter([
+    {
+      path: '', element: <Layout />, children: [
+        { index: true, element: <RouteGuard><Home /></RouteGuard> },
+        { path: 'brands', element: <RouteGuard><Brands /></RouteGuard> },
+        { path: 'cart', element: <RouteGuard><Cart /></RouteGuard> },
+        { path: 'checkout', element: <RouteGuard><CheckOut /></RouteGuard> },
+        { path: 'allorders', element: <RouteGuard><AllOrders/></RouteGuard> },
+        { path: 'categories', element: <RouteGuard><Categories /></RouteGuard> },
+        { path: '*', element: <Notfound /> },
+        { path: 'register', element: <Register /> },
+        { path: 'signin', element: <SignIn /> },
+        { path: 'products', element: <RouteGuard><Products /></RouteGuard> },
+        { path: 'productdetails/:id', element: <RouteGuard><ProductDetails /></RouteGuard> },
+      ]
+    }
+  ]);
+  return <CartContextProvider>
+    <UserContextProvider>
+      <RouterProvider router={routers}></RouterProvider>
+      <Toaster />
+    </UserContextProvider>
+  </CartContextProvider>
 }
 export default App

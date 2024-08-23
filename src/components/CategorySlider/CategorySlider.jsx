@@ -12,23 +12,23 @@ export default function CategorySlider() {
         arrows: false,
         autoplay: true,
         autoplaySpeed: 1000,
-      };
-const [categories,setCategories] = useState([])
-async function getCategories() {
-    let {data} = await axios.get(`https://ecommerce.routemisr.com/api/v1/categories`)
-    setCategories(data.data)
-}
+    };
+    const [categories, setCategories] = useState([])
+    async function getCategories() {
+        let { data } = await axios.get(`https://ecommerce.routemisr.com/api/v1/categories`)
+        setCategories(data.data)
+    }
 
-useEffect(()=>{
-getCategories()
-},[])
+    useEffect(() => {
+        getCategories()
+    }, [])
     return <>
-        <div className="text-3xl">CategorySlider</div>
-   {categories ? <div><Slider {...settings}>
-                    {categories.map((category) => <div key={category._id}>
-                    <img  src={category.image} className='w-full h-[200px]' />
-                    <h2>{category.name}</h2>
-                    </div>)}
-                </Slider></div> : ''}
+
+        {categories ? <div className='mt-20'><Slider {...settings}>
+            {categories.map((category) => <div key={category._id}>
+                <img src={category.image} className='w-full h-[200px]' />
+                <h2>{category.name}</h2>
+            </div>)}
+        </Slider></div> : ''}
     </>
 }

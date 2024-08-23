@@ -35,7 +35,7 @@ a , a:hover{
 .product:hover
 {
     box-shadow: var(--shadow);
-    border: solid 1px var(--main-color);
+    /* border: solid 1px var(--main-color); */
 }
 .product .btn 
 {
