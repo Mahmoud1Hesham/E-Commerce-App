@@ -8,6 +8,8 @@ export default function UserContextProvider({ children }) {
     useEffect(() => {
         if (localStorage.getItem('token') != null) {
             setUserData(localStorage.getItem('token'));
+            console.log(userData);
+            
         }
     })
     return <userContext.Provider value={{ userData, setUserData }}>

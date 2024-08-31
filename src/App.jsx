@@ -17,6 +17,8 @@ import CartContextProvider from './Context/CartContext.jsx';
 import { Toaster } from 'react-hot-toast';
 import CheckOut from './components/CheckOut/CheckOut.jsx';
 import AllOrders from './components/AllOrders/AllOrders.jsx';
+import WishListContextProvider from './Context/WishListContext.jsx';
+import WishList from './components/WishList/WishList.jsx';
 
 function App() {
   let routers = createBrowserRouter([
@@ -32,15 +34,18 @@ function App() {
         { path: 'register', element: <Register /> },
         { path: 'signin', element: <SignIn /> },
         { path: 'products', element: <RouteGuard><Products /></RouteGuard> },
+        { path: 'wishlist', element: <RouteGuard><WishList /></RouteGuard> },
         { path: 'productdetails/:id', element: <RouteGuard><ProductDetails /></RouteGuard> },
       ]
     }
   ]);
   return <CartContextProvider>
-    <UserContextProvider>
+<WishListContextProvider>
+<UserContextProvider>
       <RouterProvider router={routers}></RouterProvider>
       <Toaster />
     </UserContextProvider>
+</WishListContextProvider>
   </CartContextProvider>
 }
 export default App

@@ -77,7 +77,7 @@ export default function CartContextProvider({ children }) {
     }
     useEffect(()=>{getLoggedUserCart()},[])
 
-    return <CartContext.Provider value={{checkoutSession, addProductsToCart , getLoggedUserCart ,cart ,setCart ,updateProductCount,deleteProduct }}>
+    return <CartContext.Provider value={{checkoutSession, addProductsToCart  ,cart ,setCart ,updateProductCount,deleteProduct }}>
         {children}
     </CartContext.Provider>
 

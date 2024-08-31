@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom';
 
 export default function Cart() {
 
-    let { cart, updateProductCount, deleteProduct, addToWishlist } = useContext(CartContext);
+    let { cart, updateProductCount, deleteProduct } = useContext(CartContext);
 
     let [productId, setProductId] = useState('');
-    let [productCount, setProductCount] = useState(0)
     let [loading, setLoading] = useState(false);
+    let [productCount, setProductCount] = useState(0);
     async function updateProduct(productId, count) {
         if (count > 0 && count < 100) {
             setProductCount(count);
@@ -23,7 +23,7 @@ export default function Cart() {
     }
 
     return <>
-        {cart && cart.data.products && cart.data.products.length > 0 ? (
+        {cart && cart.data.products ? cart.data.products.length > 0 ? (
             <div className="relative  shadow-md sm:rounded-lg mt-4 mb-14 w-5/6 mx-auto ">
                 <table className="w-full text-sm text-left rtl:text-right text-gray-500 ">
                     <thead className="text-xs text-gray-700 uppercase bg-gray-50  ">
@@ -39,7 +39,6 @@ export default function Cart() {
                     </thead>
                     <tbody>
                         {cart.data.products.map((product) =>
-
                             <tr key={product.product.id} className="bg-white border-b hover:bg-gray-100 hover:scale-105 transition-all duration-500 ease-in-out shadow-md hover:shadow-lg">
                                 <td className="p-4">
                                     <img src={product.product.imageCover} className="w-16 md:w-32 max-w-full max-h-full" alt={product.product.title} />
@@ -69,7 +68,6 @@ export default function Cart() {
                                     <button onClick={() => deleteProduct(product.product.id)} className="font-medium text-red-600  hover:underline">Remove</button>
                                 </td>
                             </tr>
-
                         )}
                     </tbody>
                     <tfoot>
@@ -81,14 +79,14 @@ export default function Cart() {
                                 <h3 className="text-xl text-black">Total Cart Amount: {cart.data?.totalCartPrice} EGP</h3>
                             </td>
                             <td colSpan="2" className="p-4 text-center">
-                                <Link to={'/checkout'} className="bg-main text-white py-3 px-5 rounded-md hover:text-white" to="/checkout">Check Out</Link>
+                                <Link to={'/checkout'} className="bg-main text-white py-3 px-5 rounded-md hover:text-white">Check Out</Link>
                             </td>
                         </tr>
                     </tfoot>
 
                 </table>
             </div>
-        ) : <Loader />}
+        ): <h2>This cart is empty, please buy some stuff</h2> : <Loader />}
     </>
 
 }

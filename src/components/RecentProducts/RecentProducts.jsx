@@ -3,12 +3,14 @@ import React, { useContext, useEffect, useState } from 'react'
 import Loader from '../Loader/Loader';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../../Context/CartContext.jsx';
+import { WishContext } from '../../Context/WishListContext.jsx';
 
 export default function RecentProducts() {
 
     const [products, setProducts] = useState([])
 
     let {addProductsToCart} = useContext(CartContext);
+    let {addToWishlist} = useContext(WishContext);
 
     async function getProducts() {
         let { data } = await axios.get(`https://ecommerce.routemisr.com/api/v1/products`);

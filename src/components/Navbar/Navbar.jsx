@@ -4,9 +4,11 @@ import logo from '../../assets/freshcart-logo.svg';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { userContext } from '../../Context/UserContext.jsx';
 import { CartContext } from '../../Context/CartContext.jsx';
+import { WishContext } from '../../Context/WishListContext.jsx';
 
 export default function Navbar() {
     let { cart } = useContext(CartContext);
+    let {wish} = useContext(WishContext);
     const [isOpen, setIsOpen] = useState(false);
     let { userData, setUserData } = useContext(userContext);
     let navigate = useNavigate();
@@ -45,6 +47,7 @@ export default function Navbar() {
 
                                 {userData ? <>
                                     <li><NavLink to='cart'><i className='fas fa-shopping-cart'></i> <span>{cart ? cart.numOfCartItems : 0}</span></NavLink></li>
+                                    <li><NavLink to='wishlist'><i class="fa-solid fa-heart"></i> <span>{wish ? wish.count : 0}</span></NavLink></li>
                                     <li onClick={signOut} className='cursor-pointer'><span>SignOut</span></li>
                                 </>
                                     : <>
