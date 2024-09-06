@@ -10,7 +10,7 @@ export default function Footer() {
 
 
     return <>
-        <footer className='container px-24 pb-20  pt-12 bg-main-light'>
+        <footer className=' px-24 pb-20  pt-12 bg-main-light'>
             <h2 className='text-3xl'>Get The FreshCart App</h2>
             <p className='text-gray-500'>We will send you a link, open it on your phone to download the app.</p>
             <div className="flex sm:flex-col sm:space-y-4 xl:space-y-0 md:flex-row justify-between items-center flex-wrap border-b-2 p-3">

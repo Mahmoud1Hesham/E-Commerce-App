@@ -43,11 +43,12 @@ export default function Navbar() {
                                 <li><NavLink to='categories'>Categories</NavLink></li>
                                 <li><NavLink to='brands'>Brands</NavLink></li>
                             </ul> : ' '}
-                            <ul className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 items-center ml-auto">
+                            <ul className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-3 items-center ml-auto">
 
                                 {userData ? <>
                                     <li><NavLink to='cart'><i className='fas fa-shopping-cart'></i> <span>{cart ? cart.numOfCartItems : 0}</span></NavLink></li>
                                     <li><NavLink to='wishlist'><i class="fa-solid fa-heart"></i> <span>{wish ? wish.count : 0}</span></NavLink></li>
+                                    <li><NavLink to='allorders'>Orders<i class="fa-solid fa-user ml-2"></i></NavLink></li>
                                     <li onClick={signOut} className='cursor-pointer'><span>SignOut</span></li>
                                 </>
                                     : <>
@@ -55,7 +56,7 @@ export default function Navbar() {
                                         <li><NavLink to='signin'>SignIn</NavLink></li>
                                     </>
                                 }
-                                <li className="space-x-2">
+                                <li className="space-x-2 px-2">
                                     <i className="fa-brands fa-instagram"></i>
                                     <i className="fa-brands fa-facebook"></i>
                                     <i className="fa-brands fa-tiktok"></i>

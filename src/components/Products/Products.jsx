@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
+import RecentProducts from '../RecentProducts/RecentProducts'
 
 export default function Products() {
 
 
 
     return <>
-        <div className="text-3xl">Products</div>
+        <RecentProducts/>
     </>
 }

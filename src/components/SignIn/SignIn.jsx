@@ -10,7 +10,7 @@ export default function SignIn() {
     const [apiError, setApiError] = useState(null);
     const [loading, setloading] = useState(false)
     let navigate = useNavigate();
-    let {setUserData} = useContext(userContext);
+    let { setUserData } = useContext(userContext);
     async function logIn(values) {
 
         try {
@@ -63,7 +63,9 @@ export default function SignIn() {
                     </div> : ''}
                     {loading ? <button type="button" class="mt-2 text-white bg-main focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"><i class="fa-solid fa-crosshairs fa-spin"></i></button>
                         : <button type="submit" class="mt-2 text-white bg-main focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Submit</button>
-                    }                </form>
+                    }
+                    {/* <button>Forgot your Password ?</button> */}
+                </form>
             </div>
         </>
     )

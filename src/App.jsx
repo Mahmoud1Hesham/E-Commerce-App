@@ -28,7 +28,7 @@ function App() {
         { path: 'brands', element: <RouteGuard><Brands /></RouteGuard> },
         { path: 'cart', element: <RouteGuard><Cart /></RouteGuard> },
         { path: 'checkout', element: <RouteGuard><CheckOut /></RouteGuard> },
-        { path: 'allorders', element: <RouteGuard><AllOrders/></RouteGuard> },
+        { path: 'allorders', element: <RouteGuard><AllOrders /></RouteGuard> },
         { path: 'categories', element: <RouteGuard><Categories /></RouteGuard> },
         { path: '*', element: <Notfound /> },
         { path: 'register', element: <Register /> },
@@ -40,12 +40,12 @@ function App() {
     }
   ]);
   return <CartContextProvider>
-<WishListContextProvider>
-<UserContextProvider>
-      <RouterProvider router={routers}></RouterProvider>
-      <Toaster />
-    </UserContextProvider>
-</WishListContextProvider>
+    <WishListContextProvider>
+      <UserContextProvider>
+        <RouterProvider router={routers}></RouterProvider>
+        <Toaster />
+      </UserContextProvider>
+    </WishListContextProvider>
   </CartContextProvider>
 }
 export default App
