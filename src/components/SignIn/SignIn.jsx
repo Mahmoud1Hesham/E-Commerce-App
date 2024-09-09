@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import axios from 'axios';
 import { useFormik } from 'formik'
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { userContext } from '../../Context/UserContext.jsx';
 
@@ -15,6 +15,7 @@ export default function SignIn() {
 
         try {
             setloading(true)
+            localStorage.removeItem('token')
             let { data } = await axios.post(`https://ecommerce.routemisr.com/api/v1/auth/signin`, values)
             localStorage.setItem('token', data.token)
             setUserData(data.token);
@@ -30,7 +31,7 @@ export default function SignIn() {
 
     let validationSchema = Yup.object().shape({
         email: Yup.string().email('invalid email !').required('Email is required !'),
-        password: Yup.string().matches(/^[A-Z]\w{5,8}$/, 'Password must start with a capital litter and must be a 6 to 11 litters').required('Please write a strong valid password !'),
+        password: Yup.string().matches(/^\w{6,9}$/, 'Password must start with a capital litter and must be a 6 to 9 litters').required('Please write a strong valid password !'),
     })
 
     let formik = useFormik({
@@ -64,7 +65,9 @@ export default function SignIn() {
                     {loading ? <button type="button" class="mt-2 text-white bg-main focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"><i class="fa-solid fa-crosshairs fa-spin"></i></button>
                         : <button type="submit" class="mt-2 text-white bg-main focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Submit</button>
                     }
-                    {/* <button>Forgot your Password ?</button> */}
+                    <div className="w-full flex justify-end">
+                    <Link to='/forgotpassword' ><button className='text-sm transition-all duration-300 ease-in-out hover:bg-green-600 hover:text-white rounded-lg px-5 py-2.5'>Forgot your Password ?</button></Link>
+                    </div>
                 </form>
             </div>
         </>

@@ -24,7 +24,7 @@ export default function Navbar() {
     return (
         <>
             <nav className="bg-gray-200 py-2 px-5 text-center fixed z-40 w-full">
-                <div className="container">
+                <div className="container md:!container">
                     <div className="flex flex-col md:flex-row justify-between">
                         <div className="flex justify-between items-center md:space-x-2 px-2">
                             <img src={logo} alt="logo" />
@@ -36,8 +36,8 @@ export default function Navbar() {
                             </button>
                         </div>
                         <div className={` ${isOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'}
-                                md:max-h-none md:opacity-100 overflow-hidden transition-all duration-500 ease-in-out md:flex flex-col md:flex-row justify-between w-full`}>
-                            {userData ? <ul className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2">
+                                md:max-h-none md:opacity-100 overflow-hidden transition-all duration-500 ease-in-out md:flex flex-col md:flex-row md:space-x-10 justify-between w-full`}>
+                            {userData ? <ul className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 justify-center items-center">
                                 <li><NavLink to=''>Home</NavLink></li>
                                 <li><NavLink to='products'>Products</NavLink></li>
                                 <li><NavLink to='categories'>Categories</NavLink></li>
@@ -46,9 +46,9 @@ export default function Navbar() {
                             <ul className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-3 items-center ml-auto">
 
                                 {userData ? <>
-                                    <li><NavLink to='cart'><i className='fas fa-shopping-cart'></i> <span>{cart ? cart.numOfCartItems : 0}</span></NavLink></li>
-                                    <li><NavLink to='wishlist'><i class="fa-solid fa-heart"></i> <span>{wish ? wish.count : 0}</span></NavLink></li>
-                                    <li><NavLink to='allorders'>Orders<i class="fa-solid fa-user ml-2"></i></NavLink></li>
+                                    <li ><NavLink to='cart'> <span className='flex justify-center items-center'><i className='fas fa-shopping-cart px-1'></i>{cart ? cart.numOfCartItems : 0}</span></NavLink></li>
+                                    <li ><NavLink to='wishlist'> <span className='flex justify-center items-center '><i class="fa-solid fa-heart px-1"></i>{wish ? wish.count : 0}</span></NavLink></li>
+                                    <li className='flex justify-center items-center'><NavLink to='allorders'>Orders</NavLink><i class="fa-solid fa-user ml-2"></i></li>
                                     <li onClick={signOut} className='cursor-pointer'><span>SignOut</span></li>
                                 </>
                                     : <>
@@ -56,7 +56,7 @@ export default function Navbar() {
                                         <li><NavLink to='signin'>SignIn</NavLink></li>
                                     </>
                                 }
-                                <li className="space-x-2 px-2">
+                                <li className="space-x-2 px-2 ">
                                     <i className="fa-brands fa-instagram"></i>
                                     <i className="fa-brands fa-facebook"></i>
                                     <i className="fa-brands fa-tiktok"></i>

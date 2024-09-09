@@ -19,6 +19,9 @@ import CheckOut from './components/CheckOut/CheckOut.jsx';
 import AllOrders from './components/AllOrders/AllOrders.jsx';
 import WishListContextProvider from './Context/WishListContext.jsx';
 import WishList from './components/WishList/WishList.jsx';
+import ForgotPassword from './components/ForgotPassword/ForgotPassword.jsx';
+import ResetPassword from './components/ResetPassword/ResetPassword.jsx';
+import PasswordContextProvider from './Context/PasswordContext.jsx';
 
 function App() {
   let routers = createBrowserRouter([
@@ -35,17 +38,23 @@ function App() {
         { path: 'signin', element: <SignIn /> },
         { path: 'products', element: <RouteGuard><Products /></RouteGuard> },
         { path: 'wishlist', element: <RouteGuard><WishList /></RouteGuard> },
+        { path: 'forgotpassword', element: <ForgotPassword /> },
+        { path: 'resetpassword', element: <ResetPassword /> },
         { path: 'productdetails/:id', element: <RouteGuard><ProductDetails /></RouteGuard> },
       ]
     }
   ]);
-  return <CartContextProvider>
-    <WishListContextProvider>
-      <UserContextProvider>
-        <RouterProvider router={routers}></RouterProvider>
-        <Toaster />
-      </UserContextProvider>
-    </WishListContextProvider>
-  </CartContextProvider>
+
+  return <PasswordContextProvider>
+    <CartContextProvider>
+      <WishListContextProvider>
+        <UserContextProvider>
+          <RouterProvider router={routers}></RouterProvider>
+          <Toaster />
+        </UserContextProvider>
+      </WishListContextProvider>
+    </CartContextProvider>
+  </PasswordContextProvider>
+
 }
 export default App

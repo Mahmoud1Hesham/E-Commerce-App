@@ -5,10 +5,9 @@ import { Link } from 'react-router-dom';
 
 export default function Cart() {
 
-    let { cart, updateProductCount, deleteProduct } = useContext(CartContext);
+    let { cart, updateProductCount, deleteProduct, loading, setLoading } = useContext(CartContext);
 
     let [productId, setProductId] = useState('');
-    let [loading, setLoading] = useState(false);
     let [productCount, setProductCount] = useState(0);
     async function updateProduct(productId, count) {
         if (count > 0 && count < 100) {
@@ -23,7 +22,7 @@ export default function Cart() {
     }
 
     return <>
-        {cart && cart.data.products ? cart.data.products.length > 0 ? (
+        {cart && cart.data.products && !loading ? cart.data.products.length > 0 ? (
             <div className="relative  shadow-md sm:rounded-lg mt-4 mb-14 w-5/6 mx-auto ">
                 <table className="w-full text-sm text-left rtl:text-right text-gray-500 ">
                     <thead className="text-xs text-gray-700 uppercase bg-gray-50  ">

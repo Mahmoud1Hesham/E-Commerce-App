@@ -35,6 +35,8 @@ export default function CartContextProvider({ children }) {
                 headers
             })
             console.log(data);
+            setCart(data)
+            getLoggedUserCart()
             toast.success(data.message)
         } catch (err) {
             console.log(err);
@@ -43,11 +45,13 @@ export default function CartContextProvider({ children }) {
     }
     async function deleteProduct(productId) {
         try {
+            setLoading(true);
             let { data } = await axios.delete(`https://ecommerce.routemisr.com/api/v1/cart/${productId}`,{
                 headers
             })
             console.log(data);
             setCart(data)
+            setLoading(false);
             toast.success('The selected product has been deleted')
         } catch (err) {
             console.log(err);
@@ -69,11 +73,13 @@ export default function CartContextProvider({ children }) {
     }
     async function getLoggedUserCart() {
         try {
-            let { data } = await axios.get(`https://ecommerce.routemisr.com/api/v1/cart`,{ headers})
-            console.log(data);
-            setCart(data)
-            setUserId(data.data.cartOwner); 
-        console.log(data.data.cartOwner);
+            if(localStorage.getItem('token')){
+                let { data } = await axios.get(`https://ecommerce.routemisr.com/api/v1/cart`,{ headers})
+                console.log(data);
+                setCart(data)
+                setUserId(data.data.cartOwner); 
+            console.log(data.data.cartOwner);
+            }
             
         } catch (err) {
             console.log("Error response:", err.response);
@@ -93,7 +99,7 @@ export default function CartContextProvider({ children }) {
     }
     useEffect(()=>{getLoggedUserCart()},[])
 
-    return <CartContext.Provider value={{checkoutSession, addProductsToCart  ,cart ,setCart ,updateProductCount,deleteProduct, userId,getUserOrders,orders }}>
+    return <CartContext.Provider value={{loading,setLoading,checkoutSession, addProductsToCart  ,cart ,setCart ,updateProductCount,deleteProduct, userId,getUserOrders,orders }}>
         {children}
     </CartContext.Provider>
 
