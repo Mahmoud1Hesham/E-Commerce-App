@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, createHashRouter, RouterProvider } from 'react-router-dom'
 import Layout from './components/Layout/Layout.jsx';
 import Home from './components/Home/Home.jsx';
 import Brands from './components/Brands/Brands.jsx';
@@ -24,7 +24,7 @@ import ResetPassword from './components/ResetPassword/ResetPassword.jsx';
 import PasswordContextProvider from './Context/PasswordContext.jsx';
 
 function App() {
-  let routers = createBrowserRouter([
+  let routers = createHashRouter([
     {
       path: '', element: <Layout />, children: [
         { index: true, element: <RouteGuard><Home /></RouteGuard> },
