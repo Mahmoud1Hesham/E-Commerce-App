@@ -37,12 +37,12 @@ export default function ProductDetails() {
     }, [id])
     return <>
         {details ? details == 'fail' ? <h1>Product not found</h1> : <div className='flex flex-wrap items-center w-5/6 mx-auto space-x-4 space-y-16 px-5 py-20'>
-            <div className="w-1/4">
+            <div className="w-3/4 mx-auto md:w-1/4">
                 <Slider {...settings}>
                     {details.images.map((image, idx) => <img key={idx} src={image} className='w-full' />)}
                 </Slider>
             </div>
-            <div className="w-[71%]">
+            <div className="md:w-[72%] text-center">
                 <h2 className="text-xl">{details.title}</h2>
                 <p className="text-gray-500 font-sm p-2">{details.description}</p>
                 <h2>{details.category.name}</h2>

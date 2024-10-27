@@ -23,13 +23,13 @@ export default function Navbar() {
 
     return (
         <>
-            <nav className="bg-gray-200 py-2 px-5 text-center fixed z-40 w-full">
+            <nav className="bg-gray-200 py-3 md:pr-20  text-center fixed z-40 w-full">
                 <div className="container md:!container">
                     <div className="flex flex-col md:flex-row justify-between">
                         <div className="flex justify-between items-center md:space-x-2 px-2">
                             <img src={logo} alt="logo" />
                             <button
-                                className="md:hidden"
+                                className="md:hidden "
                                 onClick={toggleNavbar}
                             >
                                 <i className="fa-solid fa-bars fa-xl"></i>
@@ -56,7 +56,7 @@ export default function Navbar() {
                                         <li><NavLink to='signin'>SignIn</NavLink></li>
                                     </>
                                 }
-                                <li className="space-x-2 px-2 ">
+                                <li className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-6 gap-2 ">
                                     <i className="fa-brands fa-instagram"></i>
                                     <i className="fa-brands fa-facebook"></i>
                                     <i className="fa-brands fa-tiktok"></i>

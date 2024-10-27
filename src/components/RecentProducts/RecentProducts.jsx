@@ -22,7 +22,7 @@ export default function RecentProducts() {
         getProducts();
     }, [])
     return <>
-        {products.length ? <div className=" grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-5">
+        {products.length ? <div className=" grid container grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-5">
 
             {products.map((product) =>
                 <div className="product my-2 relative" key={product.id}>
