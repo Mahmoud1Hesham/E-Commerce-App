@@ -56,7 +56,7 @@ export default function Navbar() {
                                         <li><NavLink to='signin'>SignIn</NavLink></li>
                                     </>
                                 }
-                                <li className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-6 gap-2 ">
+                                <li className="grid grid-cols-6 md:grid-cols-3 lg:grid-cols-6 gap-2 ">
                                     <i className="fa-brands fa-instagram"></i>
                                     <i className="fa-brands fa-facebook"></i>
                                     <i className="fa-brands fa-tiktok"></i>

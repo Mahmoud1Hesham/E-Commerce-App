@@ -13,11 +13,11 @@ export default function Footer() {
         <footer className=' px-24 md:pb-20 pb-9 md:pt-12 bg-main-light text-center'>
             <h2 className='text-3xl'>Get The FreshCart App</h2>
             <p className='text-gray-500'>We will send you a link, open it on your phone to download the app.</p>
-            <div className="flex flex-col space-y-3 xl:space-y-0 md:flex-row justify-between items-center flex-wrap border-b-2 p-3">
-                <div className='w-[83%] flex items-center'>
+            <div className="flex flex-col space-y-3 md:space-y-0 md:flex-row justify-between items-center flex-wrap border-b-2 p-3">
+                <div className='w-full md:w-[68%] lg:w-[76%] xl:w-[82%] flex items-center'>
                     <input type="text" id="first_name" class="bg-gray-50 border outline-none border-gray-300 transition-all duration-200 ease-in-out text-sm rounded-lg focus:border-green-300 focus:ring-green-300 block w-full p-2.5  " placeholder="Email" />
                 </div>
-                <button className='bg-main px-10 py-1 rounded-md text-white w-fit '>Share App Link</button>
+                <button className='bg-main px-8 lg:px-10 py-1 rounded-md text-white w-fit '>Share App Link</button>
             </div>
             <div className="flex border-b-2 justify-between flex-col sm:justify-center xl:justify-between xl:flex-row">
                 <div className="flex space-x-3 py-5  sm:justify-center">

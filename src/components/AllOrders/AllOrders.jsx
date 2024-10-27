@@ -29,7 +29,7 @@ export default function AllOrders() {
                                         <td className="p-4">
                                             <img
                                                 src={product.product.imageCover}
-                                                className="w-16 md:w-32 max-w-full max-h-full"
+                                                className="w-fit md:w-32 max-w-full max-h-full"
                                                 alt={product.product.title}
                                             />
                                         </td>

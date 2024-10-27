@@ -24,12 +24,14 @@ import { Outlet } from 'react-router-dom';
 
 export default function Layout() {
     return (
-        <div className="flex container flex-col min-h-screen">
+        <>
             <Navbar />
+        <div className="flex container flex-col min-h-screen">
             <div className=" sm:container md:pt-16 md:px-14">
                 <Outlet />
             </div>
             <Footer />
         </div>
+        </>
     );
 }

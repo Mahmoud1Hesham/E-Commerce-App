@@ -11,13 +11,11 @@ export default function WishList() {
 
     return <>
         {wish && wish.data && !loading ? wish.data.length > 0 ? (
-            <div className="relative  shadow-md sm:rounded-lg mt-4 mb-14 w-5/6 mx-auto ">
+            <div className="relative  shadow-md sm:rounded-lg mt-20 md:mt-4 mb-14 md:w-5/6 w-[91%] mx-auto  ">
                 <table className="w-full text-sm text-left rtl:text-right text-gray-500 ">
                     <thead className="text-xs text-gray-700 uppercase bg-gray-50  ">
                         <tr>
-                            <th scope="col" className="px-16 py-3">
-                                <span className="sr-only">Image</span>
-                            </th>
+                            <th scope="col" className="px-6 py-3">Image</th>
                             <th scope="col" className="px-6 py-3">Product</th>
                             <th scope="col" className="px-6 py-3">Price</th>
                             <th scope="col" className="px-6 py-3">Action</th>
