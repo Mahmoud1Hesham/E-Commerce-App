@@ -30,8 +30,8 @@ export default function Layout() {
             <div className=" sm:container md:pt-16 md:px-14">
                 <Outlet />
             </div>
-            <Footer />
         </div>
+            <Footer />
         </>
     );
 }
