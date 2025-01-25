@@ -30,7 +30,7 @@ export default function Register() {
 let validationSchema =  Yup.object().shape({
     name : Yup.string().min(3 , 'Sorry, but the minimum litters is 3').max(12 , 'Sorry, but the maximum litters is 10').required('name is required !'),
     email : Yup.string().email('invalid email !').required('Email is required !'),
-    password : Yup.string().matches(/^[A-Z][A-Za-z0-9]{5,10}$ /,'Password must start with a capital litter and must be a 6 to 11 litters').required('Please write a strong valid password !'),
+    password : Yup.string().matches(/^[A-Z][A-Za-z0-9]{5}$ /,'Password must start with a capital litter and must be at least 6 litters').required('Please write a strong valid password !'),
     rePassword : Yup.string().oneOf([Yup.ref('password')], 'the repassword does not match the password !').required('Please rewrite the password !'),
     phone : Yup.string().matches(/^(002|\+2)?01[0125][0-9]{8}$/,'Sorry, but we need an egyptian number !').required('Sorry, but phone number is required !')
 })
