@@ -31,7 +31,7 @@ export default function SignIn() {
 
     let validationSchema = Yup.object().shape({
         email: Yup.string().email('invalid email !').required('Email is required !'),
-        password: Yup.string().matches(/^\w{6,9}$/, 'Password must start with a capital litter and must be a 6 to 9 litters').required('Please write a strong valid password !'),
+        password: Yup.string().matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/, 'Password must be at least 8 characters long, include at least one uppercase letter, one lowercase letter, and one digit.').required('Please write a strong valid password !'),
     })
 
     let formik = useFormik({
@@ -66,7 +66,7 @@ export default function SignIn() {
                         : <button type="submit" class="mt-2 text-white bg-main focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Submit</button>
                     }
                     <div className="w-full flex justify-end">
-                    <Link to='/forgotpassword' ><button className='text-sm transition-all duration-300 ease-in-out hover:bg-green-600 hover:text-white rounded-lg px-5 py-2.5'>Forgot your Password ?</button></Link>
+                        <Link to='/forgotpassword' ><button className='text-sm transition-all duration-300 ease-in-out hover:bg-green-600 hover:text-white rounded-lg px-5 py-2.5'>Forgot your Password ?</button></Link>
                     </div>
                 </form>
             </div>
